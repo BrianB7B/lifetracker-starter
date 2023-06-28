@@ -1,9 +1,10 @@
 "use strict"
 
 /** Database setup for vaccine hub. */
+const { getDatabaseUri } = require("./config.js");
 
 const { Client } = require("pg")
-const { getDatabaseUri } = require("./config")
+// const { getDatabaseUri } = require("./config")
 require("colors")
 
 const db = new Client({ connectionString: getDatabaseUri() })
