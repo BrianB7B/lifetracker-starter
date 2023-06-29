@@ -50,9 +50,9 @@ export default function Login({ setAppState }) {
 
   return (
     <div className="Login">
-      <div className="media">
-        {/* <img src={undraw_medical_research} alt="medical research" /> */}
-        </div>
+      {/* <div className="media">
+        {/* <img src={undraw_medical_research} alt="medical research" /> }
+        </div> */}
 
       <div className="card">
         <h2>Login to the Portal</h2>
