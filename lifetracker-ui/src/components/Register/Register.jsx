@@ -104,8 +104,8 @@ export default function Signup({ setAppState }) {
           <div className="split-inputs">
             <div className="input-field">
               {/* <label htmlFor="name">Select a date</label> */}
-              <input type="date" name="date" value={form.date} onChange={handleOnInputChange} />
-              {errors.date && <span className="error">{errors.date}</span>}
+              {/* <input type="date" name="date" value={form.date} onChange={handleOnInputChange} />
+              {errors.date && <span className="error">{errors.date}</span>} */}
             </div>
 
             <div className="input-field">
