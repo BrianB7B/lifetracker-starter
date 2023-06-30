@@ -65,8 +65,8 @@ export default function Signup({ setAppState }) {
 
     try {
       const res = await axios.post("http://localhost:3001/auth/register", {
-        date: form.date,
-        location: form.location,
+        // date: form.date,
+        // location: form.location,
         firstName: form.firstName,
         lastName: form.lastName,
         email: form.email,

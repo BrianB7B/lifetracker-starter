@@ -10,7 +10,6 @@
     "test": "jest user.test.js",
     "serve": "nodemon ./server/server",
     "setup": "psql -f ./server/lifetracker.sql"
-
   },
   "dependencies": {
     "bcrypt": "^5.1.0",
