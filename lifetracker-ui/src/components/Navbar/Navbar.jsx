@@ -8,11 +8,6 @@ import codepath from "../../assets/codepath.svg";
 export default function Navbar() {
   return (
     <div className="navbar">
-      {/* <div className="navbar__logo">
-        <Link to="/">
-          <img src={codepath} alt="logo" />
-        </Link>
-      </div> */}
       <div className="navbar__links">
         <Link className="navbar_logo" to="/">
         <img src={codepath} alt="logo" />
