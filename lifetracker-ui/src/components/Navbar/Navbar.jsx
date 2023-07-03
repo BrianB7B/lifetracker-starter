@@ -1,34 +1,43 @@
-import { Link, useLocation } from "react-router-dom"
+import React from "react";
+import { Link } from "react-router-dom";
+import "./Navbar.css";
+import codepath from "../../assets/codepath.svg";
 
-import "./Navbar.css"
+
 
 export default function Navbar() {
-  const location = useLocation()
-
   return (
-    <nav className="Navbar">
-      <ul className="logo">
-        <li>
-          <Link to="/">
-            {/* <img src={bottle_logo} alt="logo" add image here!/> */}
-            <h2>HEALTHTRACKER</h2>
-          </Link>
-        </li>
-      </ul>
-      {location.pathname.indexOf("portal") === -1 ? (
-        <ul>
-          <li>
-            <Link to="/login">
-              <button className="btn ghost">Login</button>
-            </Link>
-          </li>
-          <li>
-            <Link to="/register">
-              <button className="btn primary">Register</button>
-            </Link>
-          </li>
-        </ul>
-      ) : null}
-    </nav>
-  )
+    <div className="navbar">
+      {/* <div className="navbar__logo">
+        <Link to="/">
+          <img src={codepath} alt="logo" />
+        </Link>
+      </div> */}
+      <div className="navbar__links">
+        <Link className="navbar_logo" to="/">
+        <img src={codepath} alt="logo" />
+        </Link>
+        <Link className="navbar__link" to="/activity">
+          Activity
+        </Link>
+        <Link className="navbar__link" to="/exercise">
+          Exercise
+        </Link>
+        <Link className="navbar__link" to="/nutrition">
+          Nutrition
+        </Link>
+        <Link className="navbar__link" to="/sleep">
+          Sleep
+        </Link>
+      </div>
+      <div className="navbar__auth">
+        <Link to="/login">
+          <button className="navbar__button">Sign In</button>
+        </Link>
+        <Link to="/register">
+          <button className="navbar__button">Register</button>
+        </Link>
+      </div>
+    </div>
+  );
 }

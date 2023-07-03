@@ -17,7 +17,7 @@ export default function Home(){
                         <button className="btn primary">Register</button>
                     </Link>
                     <Link to="/portal">
-                        <button className="btn outline">login button</button>
+                        <button className="btn outline">Portal?</button>
                     </Link>
                 </div>
 
