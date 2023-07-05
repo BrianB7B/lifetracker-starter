@@ -6,6 +6,7 @@ import Navbar from '../Navbar/Navbar'
 import Register from '../Register/Register'
 import Login from '../Login/Login'
 import Portal from '../Portal/Portal'
+import Activity from '../ActivityPage/ActivityPage'
 
 
 export default function App() {
@@ -24,6 +25,7 @@ export default function App() {
             path="/portal"
             element={<Portal setAppState={setAppState} appState={appState} user={appState?.user} />}
           />
+          <Route path='/activity'element={<Activity/>}/>
         </Routes>
       </BrowserRouter>  
 
