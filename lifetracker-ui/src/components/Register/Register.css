@@ -1,8 +1,8 @@
 .Register {
-    height: 100%;
+    /* height: 100%;
     max-height: 100vh;
     width: 100%;
-    max-width: 100vw;
+    max-width: 100vw; */
     display: flex;
     padding: 50px 100px;
   }
@@ -17,6 +17,8 @@
     flex-direction: column;
     align-items: center;
     flex: 1;
+    margin-left: auto;
+    margin-right: auto;
   }
   .Register .card .error {
     background: #fe5421;
@@ -59,7 +61,7 @@
   .Register .card .form .input-field input,
   .Register .card .form .input-field select {
     height: 40px;
-    padding: 0 15px;
+    padding: 0 7px;
     font-size: 16px;
     border: solid 1px #ababb7;
     width: 100%;
