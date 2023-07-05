@@ -8,6 +8,7 @@ import Login from '../Login/Login'
 import Portal from '../Portal/Portal'
 import Activity from '../ActivityPage/ActivityPage'
 import Exercise from '../ExercisePage/ExercisePage'
+import Nutrition from '../NutritionPage/NutritionPage'
 
 
 export default function App() {
@@ -28,6 +29,7 @@ export default function App() {
           />
           <Route path='/activity'element={<Activity/>}/>
           <Route path='/exercise'element={<Exercise/>}/>
+          <Route path='/nutrition'element={<Nutrition/>}/>
         </Routes>
       </BrowserRouter>  
 

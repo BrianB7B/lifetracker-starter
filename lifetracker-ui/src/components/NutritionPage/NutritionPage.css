@@ -1,3 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;900&display=swap');
+
+.NutritionPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+  font-family: 'Poppins', sans-serif;
+}
+
+.NutritionPage h1 {
+  font-size: 24px;
+  font-weight: 900;
+  text-align: center;
+}
+
 .NutritionPage {
   background: #f7fafc;
 }
