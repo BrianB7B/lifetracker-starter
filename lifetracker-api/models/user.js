@@ -66,8 +66,8 @@ class User {
    * @returns user
    **/
   static async register(creds) {
-    const { email, password, firstName, lastName, location, date } = creds
-    const requiredCreds = ["email", "password", "firstName", "lastName", "location", "date"]
+    const { email, password, firstName, lastName} = creds
+    
     // try {
     //   validateFields({ required: requiredCreds, obj: creds, location: "user registration" })
     // } catch (err) {
