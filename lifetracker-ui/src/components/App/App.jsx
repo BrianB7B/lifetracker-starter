@@ -74,8 +74,8 @@ export default function App() {
           <Route
             path="/activity"element={<Activity isLoggedIn={isAuthenticated} />} />
           <Route path="/exercise" element={<Exercise isLoggedIn={isAuthenticated}/>}  />
-          <Route path="/nutrition" element={<Nutrition />} />
-          <Route path="/sleep" element={<Sleep />} />
+          <Route path="/nutrition" element={<Nutrition isLoggedIn={isAuthenticated} />} />
+          <Route path="/sleep" element={<Sleep isLoggedIn={isAuthenticated}/>} />
         </Routes>
       </BrowserRouter>  
     </div>
