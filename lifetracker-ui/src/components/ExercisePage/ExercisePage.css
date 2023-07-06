@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;900&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;900&display=swap');
 
 .ExercisePage {
   display: flex;
@@ -22,4 +22,58 @@
 }
 .test button{
   color:black;
+} */
+.ExercisePage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  font-family: 'Poppins', sans-serif;
+}
+
+.ExercisePage h1 {
+  font-size: 24px;
+  font-weight: 900;
+  text-align: center;
+}
+
+.ExercisePage form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.ExercisePage form label {
+  margin-bottom: 10px;
+}
+
+.ExercisePage form input,
+.ExercisePage form select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+}
+
+.ExercisePage form button {
+  width: 100%;
+  padding: 10px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.previousLogs {
+  margin-top: 30px;
+  border-top: 1px solid #ccc;
+  padding-top: 20px;
+}
+
+.previousLogs p {
+  margin-bottom: 10px;
+}
+
+.previousLogs hr {
+  margin-top: 20px;
 }
