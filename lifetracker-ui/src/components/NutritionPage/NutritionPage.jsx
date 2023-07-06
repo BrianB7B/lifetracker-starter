@@ -70,17 +70,21 @@ export default function Nutrition({ isLoggedIn }) {
             <button type="submit">Add Nutrition</button>
           </form>
 
+        
 
           <div className="previousLogs">
             <h2>Nutrition Data</h2>
             {nutritionLogs.map((log, index) => (
               <div key={index}>
-                 <p>Food Name: {log.foodName}</p>
-                  <p>Food Type: {log.foodType}</p>
-                  <p>Quantity: {log.quantity}</p>
-                  <p>Calories: {log.calories}</p>
-                  <p>Image URL: {log.imageUrl}</p>
-                  <hr />
+                {/* Display previous nutrition logs */}
+                <p>Food Name: {log.foodName}</p>
+                <p>Food Type: {log.foodType}</p>
+                <p>Quantity: {log.quantity}</p>
+                <p>Calories: {log.calories}</p>
+                <div className="imageContainer">
+                  <div className="imageCircle" style={{ backgroundImage: `url(${log.imageUrl})` }}></div>
+                </div>
+                <hr />
               </div>
             ))}
           </div>
