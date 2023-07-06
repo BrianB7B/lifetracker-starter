@@ -1,35 +1,58 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;900&display=swap');
-
 .NutritionPage {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  height: 15vh;
+  height: 100vh;
   font-family: 'Poppins', sans-serif;
 }
 
-.NutritionPage h1 {
+.NutritionPage h2 {
   font-size: 24px;
   font-weight: 900;
   text-align: center;
 }
 
-.NutritionPage {
-  background: #f7fafc;
-}
-.NutritionPage .nutrition-feed {
+.NutritionPage form {
   display: flex;
-  align-items: center;
   flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.NutritionPage form label {
+  margin-bottom: 10px;
+}
+
+.NutritionPage form input,
+.NutritionPage form select {
   width: 100%;
-  max-width: 600px;
+  padding: 10px;
+  margin-bottom: 15px;
 }
-.white {
+
+.NutritionPage form button {
+  width: 100%;
+  padding: 10px;
+  background-color: #4caf50;
   color: white;
+  border: none;
+  cursor: pointer;
 }
-.NutritionPage .button {
-  display: flex;
+
+.nutritionData {
+  margin-top: 30px;
 }
-.NutritionPage .button button {
-  flex: 1;
+
+.previousLogs {
+  margin-top: 30px;
+  border-top: 1px solid #ccc;
+  padding-top: 20px;
+}
+
+.previousLogs p {
+  margin-bottom: 10px;
+}
+
+.previousLogs hr {
+  margin-top: 20px;
 }
