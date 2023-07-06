@@ -1,10 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;900&display=swap');
 
 .SleepPage {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 15vh;
+  height: 25vh;
   font-family: 'Poppins', sans-serif;
 }
 
@@ -12,11 +12,17 @@
   font-size: 24px;
   font-weight: 900;
   text-align: center;
+  margin-bottom: 20px;
 }
 
-.SleepPage .button {
-  display: flex;
+.SleepPage form {
+  margin-bottom: 20px;
 }
-.SleepPage .button button {
-  flex: 1;
+
+.SleepPage .sleepData {
+  margin-top: 20px;
+}
+
+.SleepPage .sleepData h2 {
+  margin-bottom: 10px;
 }

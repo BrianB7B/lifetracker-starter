@@ -20,3 +20,6 @@
 .ExercisePage .button button {
   flex: 1;
 }
+.test button{
+  color:black;
+}

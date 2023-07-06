@@ -1,8 +1,6 @@
 import "./NutritionPage.css"
 import { useEffect, useState } from "react";
 
-
-
 export default function Nutrition({ isLoggedIn }) {
   const [message, setMessage] = useState("");
 
@@ -12,7 +10,7 @@ export default function Nutrition({ isLoggedIn }) {
     } else {
       setMessage("Login to see your nutrition data.");
     }
-  }, [isLoggedIn]);
+  }, [isLoggedIn]);http://localhost:5173/nutrition
 
   return (
     <div className="NutritionPage">
