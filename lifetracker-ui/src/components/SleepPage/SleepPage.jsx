@@ -50,32 +50,34 @@ export default function Sleep({ isLoggedIn }) {
   // Render the component
   return (
     <div className="SleepPage">
-      <h1>{message}</h1>
+      <div className="header">
+        <h1>{message}</h1>
+      </div>
 
       {isLoggedIn && (
-        <div>
-          <form onSubmit={handleAddSleep}>
+        <div className="content">
+          <div className="formContainer">
             <h2>Add Sleep</h2>
-            <label htmlFor="startTime">Start Time:</label>
-            <input type="datetime-local" name="startTime" id="startTime" required />
+            <form onSubmit={handleAddSleep}>
+              <label htmlFor="startTime">Start Time:</label>
+              <input type="datetime-local" name="startTime" id="startTime" required />
 
-            <label htmlFor="endTime">End Time:</label>
-            <input type="datetime-local" name="endTime" id="endTime" required />
+              <label htmlFor="endTime">End Time:</label>
+              <input type="datetime-local" name="endTime" id="endTime" required />
 
-            <button type="submit">Add Sleep</button>
-          </form>
+              <button type="submit">Add Sleep</button>
+            </form>
+          </div>
 
-          {sleepData.length > 0 && (
-            <div className="sleepData">
-              <h2>Your Sleep Data</h2>
-              {sleepData.map((sleep, index) => (
-                <div key={index}>
-                  <p>Start Time: {sleep.startTime}</p>
-                  <p>End Time: {sleep.endTime}</p>
-                </div>
-              ))}
-            </div>
-          )}
+          <div className="sleepData">
+            <h2>Your Sleep Data</h2>
+            {sleepData.map((sleep, index) => (
+              <div key={index}>
+                <p>Start Time: {sleep.startTime}</p>
+                <p>End Time: {sleep.endTime}</p>
+              </div>
+            ))}
+          </div>
         </div>
       )}
     </div>
