@@ -4,12 +4,6 @@ import axios from "axios"
 
 import "./Register.css"
 
-// const locationOptions = [
-//   { key: 1, label: "Local Clinic", value: "local clinic" },
-//   { key: 2, label: "Regional Hospital", value: "regional hospital" },
-//   { key: 3, label: "Care Center", value: "care center" },
-//   { key: 4, label: "Department of Health", value: "department of health" },
-// ]
 
 export default function Signup({ setAppState }) {
   const navigate = useNavigate()
@@ -65,8 +59,6 @@ export default function Signup({ setAppState }) {
 
     try {
       const res = await axios.post("http://localhost:3001/auth/register", {
-        // date: form.date,
-        // location: form.location,
         firstName: form.firstName,
         lastName: form.lastName,
         email: form.email,
@@ -91,35 +83,14 @@ export default function Signup({ setAppState }) {
 
   return (
     <div className="Register">
-      {/* <div className="media">
-        <MedicalResearch width={555} />
-      </div> */}
+     
       <div className="card">
-        <h2>Register For a HEALTHTRACKER</h2>
+        <h2>Register for LifeTracker</h2>
 
         {errors.form && <span className="error">{errors.form}</span>}
         <br />
 
         <div className="form">
-          <div className="split-inputs">
-            <div className="input-field">
-              {/* <label htmlFor="name">Select a date</label> */}
-              {/* <input type="date" name="date" value={form.date} onChange={handleOnInputChange} />
-              {errors.date && <span className="error">{errors.date}</span>} */}
-            </div>
-
-            <div className="input-field">
-              {/* <label htmlFor="name">Select a location</label>
-              <select name="location" onChange={(event) => setForm((f) => ({ ...f, location: event.target.value }))}>
-                {locationOptions.map((location) => (
-                  <option key={location.key} value={location.label}>
-                    {location.label}
-                  </option>
-                ))}
-              </select>
-              {errors.location && <span className="error">{errors.location}</span>} */}
-            </div>
-          </div>
 
           <br />
 
