@@ -72,10 +72,8 @@ export default function App() {
             element={<Portal user={appState?.user} setAppState={setAppState} />}
           />
           <Route
-            path="/activity"
-            element={<Activity isLoggedIn={isAuthenticated} />}
-          />
-          <Route path="/exercise" element={<Exercise />} />
+            path="/activity"element={<Activity isLoggedIn={isAuthenticated} />} />
+          <Route path="/exercise" element={<Exercise isLoggedIn={isAuthenticated}/>}  />
           <Route path="/nutrition" element={<Nutrition />} />
           <Route path="/sleep" element={<Sleep />} />
         </Routes>
