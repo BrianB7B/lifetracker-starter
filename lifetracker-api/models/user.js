@@ -1,18 +1,8 @@
 "use strict"
-
-const db = require("../db")
-const bcrypt = require("bcrypt")
-const { BadRequestError, UnauthorizedError } = require("../utils/errors")
-// const { validateFields } = require("../utils/validate")
-
-const { BCRYPT_WORK_FACTOR } = require("../config")
-
-
-//changed because got an error when test, change back if not working 
-// const { BadRequestError, UnauthorizedError } = require("../utils/errors.js");
-
-
-
+const db = require("../db");
+const bcrypt = require("bcrypt");
+const { BadRequestError, UnauthorizedError } = require("../utils/errors");
+const { BCRYPT_WORK_FACTOR } = require("../config");
 
 class User {
   /**
@@ -25,11 +15,10 @@ class User {
   static _createPublicUser(user) {
     return {
       id: user.id,
-      firstName: user.firstName,
-      lastName: user.lastName,
+      firstName: user.first_name,
+      lastName: user.last_name,
       email: user.email,
-   
-    }
+    };
   }
 
   /**
@@ -39,24 +28,18 @@ class User {
    * @returns user
    **/
   static async authenticate(creds) {
-    const { email, password } = creds
-    const requiredCreds = ["email", "password"]
-    // try {
-    //   validateFields({ required: requiredCreds, obj: creds, location: "user authentication" })
-    // } catch (err) {
-    //   throw err
-    // }
+    const { email, password } = creds;
 
-    const user = await User.fetchUserByEmail(email)
+    const user = await User.fetchUserByEmail(email);
 
     if (user) {
-      const isValid = await bcrypt.compare(password, user.password)
+      const isValid = await bcrypt.compare(password, user.password);
       if (isValid === true) {
-        return User._createPublicUser(user)
+        return User._createPublicUser(user);
       }
     }
 
-    throw new UnauthorizedError("Invalid username/password")
+    throw new UnauthorizedError("Invalid username/password");
   }
 
   /**
@@ -66,21 +49,15 @@ class User {
    * @returns user
    **/
   static async register(creds) {
-    const { email, password, firstName, lastName} = creds
-    
-    // try {
-    //   validateFields({ required: requiredCreds, obj: creds, location: "user registration" })
-    // } catch (err) {
-    //   throw err
-    // }
+    const { email, password, firstName, lastName } = creds;
 
-    const existingUserWithEmail = await User.fetchUserByEmail(email)
+    const existingUserWithEmail = await User.fetchUserByEmail(email);
     if (existingUserWithEmail) {
-      throw new BadRequestError(`Duplicate email: ${email}`)
+      throw new BadRequestError(`Duplicate email: ${email}`);
     }
 
-    const hashedPassword = await bcrypt.hash(password, BCRYPT_WORK_FACTOR)
-    const normalizedEmail = email.toLowerCase()
+    const hashedPassword = await bcrypt.hash(password, BCRYPT_WORK_FACTOR);
+    const normalizedEmail = email.toLowerCase();
 
     const result = await db.query(
       `INSERT INTO users (
@@ -90,19 +67,13 @@ class User {
           email
         )
         VALUES ($1, $2, $3, $4)
-        RETURNING 
-                  email,            
-                  first_name AS "firstName", 
-                  last_name AS "lastName"
-                  `,
+        RETURNING email, first_name AS "firstName", last_name AS "lastName"`,
       [hashedPassword, firstName, lastName, normalizedEmail]
-      
-    )
+    );
 
+    const user = result.rows[0];
 
-    const user = result.rows[0]
-
-    return user
+    return User._createPublicUser(user);
   }
 
   /**
@@ -117,11 +88,11 @@ class User {
            FROM users
            WHERE email = $1`,
       [email.toLowerCase()]
-    )
+    );
 
-    const user = result.rows[0]
+    const user = result.rows[0];
 
-    return user
+    return user;
   }
 
   /**
@@ -136,12 +107,13 @@ class User {
            FROM users
            WHERE id = $1`,
       [userId]
-    )
+    );
 
-    const user = result.rows[0]
+    const user = result.rows[0];
 
-    return user
+    return user;
   }
 }
 
-module.exports = User
+module.exports = User;
+
