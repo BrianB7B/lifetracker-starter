@@ -20,6 +20,8 @@ By the end of this project you will be able to...
 - [x] Store user-authenticated JWT tokens in the browser's local storage for persisted authentication
 
 ## Application Features
+![ezgif com-video-to-gif (3)](https://github.com/BrianB7B/lifetracker-starter/assets/120551307/adb2cce9-a825-46b5-9b82-47ffd8a28662)
+
 
 ### Core Features
 
