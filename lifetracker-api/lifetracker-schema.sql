@@ -15,3 +15,13 @@ CREATE TABLE users (
 --   user_id      VARCHAR(250) NOT NULL,
 --   created_at VARCHAR(250) NOT NULL
 -- );
+CREATE TABLE exercises (
+  id SERIAL PRIMARY KEY,
+  user_id INTEGER NOT NULL,
+  exercise_name VARCHAR(250) NOT NULL,
+  exercise_type VARCHAR(250) NOT NULL,
+  duration INTEGER NOT NULL,
+  intensity INTEGER NOT NULL,
+  created_at TIMESTAMPTZ DEFAULT NOW(),
+  FOREIGN KEY (user_id) REFERENCES users (id)
+);

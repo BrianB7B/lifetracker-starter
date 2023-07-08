@@ -90,5 +90,25 @@ router.post("/login", async (req, res) => {
     res.status(500).json({ message: "Error Logging in" });
   }
 });
+router.post("/exercises", async (req, res) => {
+  const { exerciseName, exerciseType, duration, intensity, userId } = req.body;
+
+  try {
+    // Call the addExercise method from your User model
+    const exercise = await User.addExercise({
+      exerciseName,
+      exerciseType,
+      duration,
+      intensity,
+      userId,
+    });
+
+    res.status(201).json({ message: "Exercise added successfully", exercise });
+  } catch (error) {
+    console.error("Error adding exercise: ", error);
+    res.status(500).json({ message: "Error adding exercise" });
+  }
+});
+
 
 module.exports = router;
