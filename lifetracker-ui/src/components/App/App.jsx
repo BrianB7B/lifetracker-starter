@@ -1,22 +1,100 @@
-// import { useState } from 'react'
-// import { BrowserRouter, Routes, Route } from "react-router-dom"
-// import './App.css'
-// import Home from '../Home/Home'
-// import Navbar from '../Navbar/Navbar'
-// import Register from '../Register/Register'
-// import Login from '../Login/Login'
-// import Portal from '../Portal/Portal'
-// import Activity from '../ActivityPage/ActivityPage'
-// import Exercise from '../ExercisePage/ExercisePage'
-// import Nutrition from '../NutritionPage/NutritionPage'
-// import Sleep from '../SleepPage/SleepPage'
+// import { useState, useEffect } from 'react';
+// import { BrowserRouter, Routes, Route } from 'react-router-dom';
+// import './App.css';
+// import Home from '../Home/Home';
+// import Navbar from '../Navbar/Navbar';
+// import Register from '../Register/Register';
+// import Login from '../Login/Login';
+// import Portal from '../Portal/Portal';
+// import Activity from '../ActivityPage/ActivityPage';
+// import Exercise from '../ExercisePage/ExercisePage';
+// import Nutrition from '../NutritionPage/NutritionPage';
+// import Sleep from '../SleepPage/SleepPage';
 
-// export default function App() {
-//   const [appState, setAppState] = useState({})
-//   const isAuthenticated = Boolean(appState?.user?.email)
-//   const handleLogout = () => { 
+// function App() {
+//   const [appState, setAppState] = useState(() => {
+//     const storedUser = localStorage.getItem('user');
+//     return storedUser ? JSON.parse(storedUser) : {};
+//   });
+
+//   const isAuthenticated = Boolean(appState?.user?.email);
+
+//   const handleLogout = () => {
+//     localStorage.removeItem('user');
 //     setAppState({});
 //   };
+
+//   useEffect(() => {
+//     if (isAuthenticated) {
+//       localStorage.setItem('user', JSON.stringify(appState));
+//     } else {
+//       localStorage.removeItem('user');
+//     }
+//   }, [isAuthenticated, appState]);
+
+//   return (
+//     <div className="App">
+//       <BrowserRouter>
+//         <Navbar isAuthenticated={isAuthenticated} handleLogout={handleLogout} />
+//         <Routes>
+//           <Route path="/" element={<Home />} />
+//           <Route path="/register" element={<Register setAppState={setAppState} />} />
+//           <Route path="/login" element={<Login setAppState={setAppState} />} />
+//           <Route
+//             path="/portal"
+//             element={<Portal user={appState?.user} setAppState={setAppState} />}
+//           />
+//           <Route path="/activity" element={<Activity isLoggedIn={isAuthenticated} />} />
+//           <Route path="/exercise" element={<Exercise isLoggedIn={isAuthenticated} />} />
+//           <Route path="/nutrition" element={<Nutrition isLoggedIn={isAuthenticated} />} />
+//           <Route path="/sleep" element={<Sleep isLoggedIn={isAuthenticated} />} />
+//         </Routes>
+//       </BrowserRouter>
+//     </div>
+//   );
+// }
+
+// export default App;
+
+
+
+
+// import { useState, useEffect } from 'react';
+// import { BrowserRouter, Routes, Route } from 'react-router-dom';
+// import './App.css';
+// import Home from '../Home/Home';
+// import Navbar from '../Navbar/Navbar';
+// import Register from '../Register/Register';
+// import Login from '../Login/Login';
+// import Portal from '../Portal/Portal';
+// import Activity from '../ActivityPage/ActivityPage';
+// import Exercise from '../ExercisePage/ExercisePage';
+// import Nutrition from '../NutritionPage/NutritionPage';
+// import Sleep from '../SleepPage/SleepPage';
+
+
+
+// function App() {
+//   const [appState, setAppState] = useState(() => {
+//     const storedUser = localStorage.getItem('user');
+//     return storedUser ? JSON.parse(storedUser) : {};
+//   });
+
+//   const isAuthenticated = Boolean(appState?.user?.email);
+//   const userId = appState?.user?.userId || '';
+
+//   const handleLogout = () => {
+//     localStorage.removeItem('user');
+//     setAppState({});
+//   };
+
+//   useEffect(() => {
+//     if (isAuthenticated) {
+//       localStorage.setItem('user', JSON.stringify(appState));
+//     } else {
+//       localStorage.removeItem('user');
+//     }
+//   }, [isAuthenticated, appState]);
 
 //   return (
 //     <div className="App">
@@ -31,15 +109,84 @@
 //             element={<Portal user={appState?.user} setAppState={setAppState} />}
 //           />
 //           <Route
-//             path="/activity"element={<Activity isLoggedIn={isAuthenticated} />} />
-//           <Route path="/exercise" element={<Exercise isLoggedIn={isAuthenticated}/>}  />
+//             path="/exercise"
+//             element={<Exercise isLoggedIn={isAuthenticated} userId={userId} />}
+//           />
+//           <Route path="/activity" element={<Activity isLoggedIn={isAuthenticated} />} />
 //           <Route path="/nutrition" element={<Nutrition isLoggedIn={isAuthenticated} />} />
-//           <Route path="/sleep" element={<Sleep isLoggedIn={isAuthenticated}/>} />
+//           <Route path="/sleep" element={<Sleep isLoggedIn={isAuthenticated} />} />
 //         </Routes>
-//       </BrowserRouter>  
+//       </BrowserRouter>
 //     </div>
 //   );
 // }
+
+// export default App;
+
+
+
+// import { useState, useEffect } from 'react';
+// import { BrowserRouter, Routes, Route } from 'react-router-dom';
+// import './App.css';
+// import Home from '../Home/Home';
+// import Navbar from '../Navbar/Navbar';
+// import Register from '../Register/Register';
+// import Login from '../Login/Login';
+// import Portal from '../Portal/Portal';
+// import Activity from '../ActivityPage/ActivityPage';
+// import ExercisePage from '../ExercisePage/ExercisePage';
+// import Nutrition from '../NutritionPage/NutritionPage';
+// import Sleep from '../SleepPage/SleepPage';
+
+// function App() {
+//   const [appState, setAppState] = useState(() => {
+//     const storedUser = localStorage.getItem('user');
+//     return storedUser ? JSON.parse(storedUser) : {};
+//   });
+
+//   const isAuthenticated = Boolean(appState?.user?.email);
+//   const userId = appState?.user?.userId || '';
+
+//   const handleLogout = () => {
+//     localStorage.removeItem('user');
+//     setAppState({});
+//   };
+
+//   useEffect(() => {
+//     if (isAuthenticated) {
+//       localStorage.setItem('user', JSON.stringify(appState));
+//     } else {
+//       localStorage.removeItem('user');
+//     }
+//   }, [isAuthenticated, appState]);
+
+//   return (
+//     <div className="App">
+//       <BrowserRouter>
+//         <Navbar isAuthenticated={isAuthenticated} handleLogout={handleLogout} />
+//         <Routes>
+//           <Route path="/" element={<Home />} />
+//           <Route path="/register" element={<Register setAppState={setAppState} />} />
+//           <Route path="/login" element={<Login setAppState={setAppState} />} />
+//           <Route
+//             path="/portal"
+//             element={<Portal user={appState?.user} setAppState={setAppState} />}
+//           />
+//           <Route
+//             path="/exercise"
+//             element={<ExercisePage isLoggedIn={isAuthenticated} userId={userId} />}
+//           />
+//           <Route path="/activity" element={<Activity isLoggedIn={isAuthenticated} />} />
+//           <Route path="/nutrition" element={<Nutrition isLoggedIn={isAuthenticated} />} />
+//           <Route path="/sleep" element={<Sleep isLoggedIn={isAuthenticated} />} />
+//         </Routes>
+//       </BrowserRouter>
+//     </div>
+//   );
+// }
+
+// export default App;
+
 
 import { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
@@ -50,17 +197,18 @@ import Register from '../Register/Register';
 import Login from '../Login/Login';
 import Portal from '../Portal/Portal';
 import Activity from '../ActivityPage/ActivityPage';
-import Exercise from '../ExercisePage/ExercisePage';
+import ExercisePage from '../ExercisePage/ExercisePage';
 import Nutrition from '../NutritionPage/NutritionPage';
 import Sleep from '../SleepPage/SleepPage';
 
 function App() {
   const [appState, setAppState] = useState(() => {
     const storedUser = localStorage.getItem('user');
-    return storedUser ? JSON.parse(storedUser) : {};
+    return storedUser ? storedUser : {};
   });
 
   const isAuthenticated = Boolean(appState?.user?.email);
+  const userId = appState?.user?.Id || '';
 
   const handleLogout = () => {
     localStorage.removeItem('user');
@@ -69,7 +217,9 @@ function App() {
 
   useEffect(() => {
     if (isAuthenticated) {
-      localStorage.setItem('user', JSON.stringify(appState));
+      localStorage.setItem('user', appState);
+  
+      console.log(appState)
     } else {
       localStorage.removeItem('user');
     }
@@ -87,8 +237,11 @@ function App() {
             path="/portal"
             element={<Portal user={appState?.user} setAppState={setAppState} />}
           />
+          <Route
+            path="/exercise"
+            element={<ExercisePage isLoggedIn={isAuthenticated} appState={appState} />}
+          />
           <Route path="/activity" element={<Activity isLoggedIn={isAuthenticated} />} />
-          <Route path="/exercise" element={<Exercise isLoggedIn={isAuthenticated} />} />
           <Route path="/nutrition" element={<Nutrition isLoggedIn={isAuthenticated} />} />
           <Route path="/sleep" element={<Sleep isLoggedIn={isAuthenticated} />} />
         </Routes>

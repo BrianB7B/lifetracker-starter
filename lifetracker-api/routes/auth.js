@@ -70,7 +70,8 @@ router.post("/login", async (req, res) => {
       // User not found or invalid password
       return res.status(401).json({ message: "Invalid email or password" });
     }
-
+    console.log(
+      "USER @: ",user)
     // Generate and sign JWT token
     const token = jwt.sign(
       { userId: user.id, userName: user.firstName },
@@ -90,7 +91,32 @@ router.post("/login", async (req, res) => {
     res.status(500).json({ message: "Error Logging in" });
   }
 });
+// router.post("/exercises", async (req, res) => {
+//   const { exerciseName, exerciseType, duration, intensity, userId } = req.body;
+
+//   try {
+//     // Call the addExercise method from your User model
+//     const exercise = await User.addExercise({
+//       exerciseName,
+//       exerciseType,
+//       duration,
+//       intensity,
+//       userId,
+//     });
+//     console.log(userId);
+
+//     res.status(201).json({ message: "Exercise added successfully", exercise });
+//   } catch (error) {
+//     console.error("Error adding exercise: ", error);
+//     res.status(500).json({ message: "Error adding exercise" });
+//   }
+// });
+
+// router.get(/exercises)
+// search database for exercises based on userId
+
 router.post("/exercises", async (req, res) => {
+  console.log("at exercices route")
   const { exerciseName, exerciseType, duration, intensity, userId } = req.body;
 
   try {
@@ -109,6 +135,22 @@ router.post("/exercises", async (req, res) => {
     res.status(500).json({ message: "Error adding exercise" });
   }
 });
+
+router.get("/exercises", async (req, res) => {
+  const { userId } = req.query;
+
+  try {
+    // Call the getExercisesByUserId method from your User model
+    const exercises = await User.getExercisesByUserId(userId);
+    console.log("routes",exercises)
+    res.status(200).json({ exercises });
+  } catch (error) {
+    console.error("Error retrieving exercises: ", error);
+    res.status(500).json({ message: "Error retrieving exercises" });
+  }
+});
+
+
 
 
 module.exports = router;

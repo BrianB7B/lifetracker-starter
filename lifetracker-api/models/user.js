@@ -67,10 +67,10 @@ class User {
           email
         )
         VALUES ($1, $2, $3, $4)
-        RETURNING email, first_name AS "firstName", last_name AS "lastName"`,
+        RETURNING email, first_name AS "firstName", last_name AS "lastName", id` ,
       [hashedPassword, firstName, lastName, normalizedEmail]
     );
-
+        
     const user = result.rows[0];
 
     return User._createPublicUser(user);
@@ -91,6 +91,8 @@ class User {
     );
 
     const user = result.rows[0];
+
+    console.log("USER: ", user)
 
     return user;
   }
@@ -114,6 +116,21 @@ class User {
     return user;
   }
   //new code for showing exerise history code change
+  // static async addExercise(info) {
+  //   const { exerciseName, exerciseType, duration, intensity, userId } = info;
+  
+  //   // Add exercise to the database
+  //   const result = await db.query(
+  //     `INSERT INTO exercises (exercise_name, exercise_type, duration, intensity, user_id)
+  //      VALUES ($1, $2, $3, $4, $5)
+  //      RETURNING exercise_name, exercise_type, duration, intensity, user_id`,
+  //     [exerciseName, exerciseType, duration, intensity, userId]
+  //   );
+  
+  //   const exercise = result.rows[0];
+  
+  //   return exercise;
+  // }
   static async addExercise(info) {
     const { exerciseName, exerciseType, duration, intensity, userId } = info;
   
@@ -129,6 +146,21 @@ class User {
   
     return exercise;
   }
+  
+  static async getExercisesByUserId(userId) {
+    // Retrieve exercises from the database based on user_id
+    console.log('model userid', userId)
+    const result = await db.query(
+      `SELECT exercise_name AS "exerciseName", exercise_type AS "exerciseType", duration, intensity, created_at FROM exercises WHERE user_id = $1`,
+      [userId]
+    );
+  
+    const exercises = result.rows;
+    console.log("models", exercises)
+    return exercises;
+
+  }
+  
   
   
   

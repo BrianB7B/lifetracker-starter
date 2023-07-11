@@ -1,150 +1,9 @@
-import { useEffect, useState } from "react";
-import "./ExercisePage.css";
-import axios from 'axios';
-
-
-export default function Exercise({ isLoggedIn }) {
-  const [message, setMessage] = useState("");
-  const [exerciseName, setExerciseName] = useState("");
-  const [exerciseType, setExerciseType] = useState("run");
-  const [duration, setDuration] = useState("");
-  const [intensity, setIntensity] = useState("");
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  const [exerciseLog, setExerciseLog] = useState([]);
-
-  useEffect(() => {
-    if (isLoggedIn) {
-      setMessage("You are logged in. Here is your exercise data.");
-    } else {
-      setMessage("Login to see your exercise data.");
-    }
-  }, [isLoggedIn]);
-
-  const handleAddExercise = (event) => {
-    event.preventDefault();
-
-    const exerciseData = {
-      exerciseName,
-      exerciseType,
-      duration,
-      intensity,
-    };
-
-    setExerciseLog((prevLogs) => [...prevLogs, exerciseData]);
-
-    setExerciseName("");
-    setExerciseType("run");
-    setDuration("");
-    setIntensity("");
-
-    setIsSubmitted(true);
-  };
-  // const handleAddExercise = async (event) => {
-  //   event.preventDefault();
-  
-  //   const exerciseData = {
-  //     exerciseName,
-  //     exerciseType,
-  //     duration,
-  //     intensity,
-  //   };
-  
-  //   try {
-  //     const response = await axios.post('/exercises', exerciseData);
-  //     const newExercise = response.data.exercise;
-  
-  //     setExerciseLog((prevLogs) => [...prevLogs, newExercise]);
-  
-  //     setExerciseName('');
-  //     setExerciseType('run');
-  //     setDuration('');
-  //     setIntensity('');
-  
-  //     setIsSubmitted(true);
-  //   } catch (error) {
-  //     console.error('Error adding exercise: ', error);
-  //     // Handle error here, show an error message, etc.
-  //   }
-  // };
-  
-
-  return (
-    <div className="ExercisePage">
-      <h1>{message}</h1>
-      {isLoggedIn && (
-        <div>
-          <form onSubmit={handleAddExercise}>
-            <label htmlFor="exerciseName">Exercise Name:</label>
-            <input
-              type="text"
-              name="exerciseName"
-              id="exerciseName"
-              value={exerciseName}
-              onChange={(e) => setExerciseName(e.target.value)}
-              required
-            />
-
-            <label htmlFor="exerciseType">Exercise Type:</label>
-            <select
-              name="exerciseType"
-              id="exerciseType"
-              value={exerciseType}
-              onChange={(e) => setExerciseType(e.target.value)}
-            >
-              <option value="run">Run</option>
-              <option value="bike">Bike</option>
-              <option value="lift">Lift</option>
-              <option value="swim">Swim</option>
-              <option value="sports">Sports</option>
-            </select>
-
-            <label htmlFor="duration">Duration (min):</label>
-            <input
-              type="number"
-              name="duration"
-              id="duration"
-              value={duration}
-              onChange={(e) => setDuration(parseInt(e.target.value))}
-            />
-
-            <label htmlFor="intensity">Intensity:</label>
-            <input
-              type="number"
-              name="intensity"
-              id="intensity"
-              value={intensity}
-              onChange={(e) => setIntensity(parseInt(e.target.value))}
-              max={10}
-            />
-
-            <button type="submit">Add Exercise</button>
-          </form>
-
-          <div className="previousLogs">
-            <h2>Exercise Data</h2>
-            {exerciseLog.map((log, index) => (
-              <div key={index}>
-                {/* Display previous exercise logs */}
-                <p>Exercise Name: {log.exerciseName}</p>
-                <p>Exercise Type: {log.exerciseType}</p>
-                <p>Duration: {log.duration}</p>
-                <p>Intensity: {log.intensity}</p>
-                <hr />
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
-    </div>
-  );
-}
-
 // import { useEffect, useState } from "react";
-// import Cookies from "js-cookie";
 // import "./ExercisePage.css";
+// import axios from 'axios';
 
 
-// export default function Exercise({ isLoggedIn }) {
+// export default function ExercisePage({ isLoggedIn,userId }) {
 //   const [message, setMessage] = useState("");
 //   const [exerciseName, setExerciseName] = useState("");
 //   const [exerciseType, setExerciseType] = useState("run");
@@ -161,19 +20,156 @@ export default function Exercise({ isLoggedIn }) {
 //     }
 //   }, [isLoggedIn]);
 
-//   useEffect(() => {
-//     const savedExerciseLog = Cookies.get("exerciseLog");
-  
-//     if (savedExerciseLog) {
-//       setExerciseLog(JSON.parse(savedExerciseLog));
-//     }
-//   }, []);
-  
-//   useEffect(() => {
-//     Cookies.set("exerciseLog", JSON.stringify(exerciseLog));
-//   }, [exerciseLog]);
+//   // const handleAddExercise = (event) => {
+//   //   event.preventDefault();
 
-//   const handleAddExercise = (event) => {
+//   //   const exerciseData = {
+//   //     exerciseName,
+//   //     exerciseType,
+//   //     duration,
+//   //     intensity,
+//   //   };
+
+//   //   setExerciseLog((prevLogs) => [...prevLogs, exerciseData]);
+
+//   //   setExerciseName("");
+//   //   setExerciseType("run");
+//   //   setDuration("");
+//   //   setIntensity("");
+
+//   //   setIsSubmitted(true);
+//   // };
+//   const handleAddExercise = async (event) => {
+//     event.preventDefault();
+  
+//     const exerciseData = {
+//       exerciseName,
+//       exerciseType,
+//       duration,
+//       intensity,
+//       userId,
+//     };
+  
+//     try {
+//       console.log(exerciseData);
+      
+//       const response = await axios.post('http://localhost:3001/auth/exercises', {...exerciseData});
+//       const newExercise = response.data.exercise;
+//       console.log(newExercise);
+  
+//       setExerciseLog((prevLogs) => [...prevLogs, newExercise]);
+  
+//       setExerciseName('');
+//       setExerciseType('run');
+//       setDuration('');
+//       setIntensity('');
+  
+//       setIsSubmitted(true);
+      
+//     } catch (error) {
+//       console.error('Error adding exercise: ', error);
+//       // Handle error here, show an error message, etc.
+//     }
+//   };
+  
+
+//   return (
+//     <div className="ExercisePage">
+//       <h1>{message}</h1>
+//       {isLoggedIn && (
+//         <div>
+//           <form onSubmit={handleAddExercise}>
+//             <label htmlFor="exerciseName">Exercise Name:</label>
+//             <input
+//               type="text"
+//               name="exerciseName"
+//               id="exerciseName"
+//               value={exerciseName}
+//               onChange={(e) => setExerciseName(e.target.value)}
+//               required
+//             />
+
+//             <label htmlFor="exerciseType">Exercise Type:</label>
+//             <select
+//               name="exerciseType"
+//               id="exerciseType"
+//               value={exerciseType}
+//               onChange={(e) => setExerciseType(e.target.value)}
+//             >
+//               <option value="run">Run</option>
+//               <option value="bike">Bike</option>
+//               <option value="lift">Lift</option>
+//               <option value="swim">Swim</option>
+//               <option value="sports">Sports</option>
+//             </select>
+
+//             <label htmlFor="duration">Duration (min):</label>
+//             <input
+//               type="number"
+//               name="duration"
+//               id="duration"
+//               value={duration}
+//               onChange={(e) => setDuration(parseInt(e.target.value))}
+//             />
+
+//             <label htmlFor="intensity">Intensity:</label>
+//             <input
+//               type="number"
+//               name="intensity"
+//               id="intensity"
+//               value={intensity}
+//               onChange={(e) => setIntensity(parseInt(e.target.value))}
+//               max={10}
+//             />
+
+//             <button type="submit">Add Exercise</button>
+//           </form>
+
+//           <div className="previousLogs">
+//             <h2>Exercise Data</h2>
+//             {exerciseLog.map((log, index) => (
+//               <div key={index}>
+//                 {/* Display previous exercise logs */}
+//                 <p>Exercise Name: {log.exerciseName}</p>
+//                 <p>Exercise Type: {log.exerciseType}</p>
+//                 <p>Duration: {log.duration}</p>
+//                 <p>Intensity: {log.intensity}</p>
+//                 <hr />
+//               </div>
+//             ))}
+//           </div>
+//         </div>
+//       )}
+//     </div>
+//   );
+// }
+
+// import { useEffect, useState } from "react";
+// import Cookies from "js-cookie";
+// import "./ExercisePage.css";
+
+// import { useEffect, useState } from 'react';
+// import './ExercisePage.css';
+// import axios from 'axios';
+
+// export default function Exercise({ isLoggedIn, userId }) {
+//   const [message, setMessage] = useState('');
+//   const [exerciseName, setExerciseName] = useState('');
+//   const [exerciseType, setExerciseType] = useState('run');
+//   const [duration, setDuration] = useState('');
+//   const [intensity, setIntensity] = useState('');
+//   const [isSubmitted, setIsSubmitted] = useState(false);
+//   const [exerciseLog, setExerciseLog] = useState([]);
+
+//   useEffect(() => {
+//     if (isLoggedIn) {
+//       setMessage('You are logged in. Here is your exercise data.');
+//     } else {
+//       setMessage('Login to see your exercise data.');
+//     }
+//   }, [isLoggedIn]);
+
+//   const handleAddExercise = async (event) => {
 //     event.preventDefault();
 
 //     const exerciseData = {
@@ -181,16 +177,113 @@ export default function Exercise({ isLoggedIn }) {
 //       exerciseType,
 //       duration,
 //       intensity,
+//       userId,
 //     };
 
-//     setExerciseLog((prevLogs) => [...prevLogs, exerciseData]);
+//     try {
+//       console.log(exerciseData);
 
-//     setExerciseName("");
-//     setExerciseType("run");
-//     setDuration("");
-//     setIntensity("");
+//       const response = await axios.post('http://localhost:3001/auth/exercises', {...exerciseData});
+//       const newExercise = response.data.exercise;
+//       console.log(newExercise);
 
-//     setIsSubmitted(true);
+//       setExerciseLog((prevLogs) => [...prevLogs, newExercise]);
+
+//       setExerciseName('');
+//       setExerciseType('run');
+//       setDuration('');
+//       setIntensity('');
+
+//       setIsSubmitted(true);
+//     } catch (error) {
+//       console.error('Error adding exercise: ', error);
+//       // Handle error here, show an error message, etc.
+//     }
+//   };
+
+//   return (
+//     <div className="ExercisePage">
+//       <h1>{message}</h1>
+//       {isLoggedIn && (
+//         <div>
+//           <form onSubmit={handleAddExercise}>
+//             {/* Rest of the form code */}
+
+//             <button type="submit">Add Exercise</button>
+//           </form>
+
+//           <div className="previousLogs">
+//             <h2>Exercise Data</h2>
+//             {/* Display previous exercise logs */}
+//             {exerciseLog.map((log, index) => (
+//               <div key={index}>
+//                 <p>Exercise Name: {log.exerciseName}</p>
+//                 <p>Exercise Type: {log.exerciseType}</p>
+//                 <p>Duration: {log.duration}</p>
+//                 <p>Intensity: {log.intensity}</p>
+//                 <hr />
+//               </div>
+//             ))}
+//           </div>
+//         </div>
+//       )}
+//     </div>
+//   );
+// }
+
+
+// import { useEffect, useState } from "react";
+// import "./ExercisePage.css";
+// import axios from 'axios';
+
+// export default function ExercisePage({ isLoggedIn, userId }) {
+//   const [message, setMessage] = useState("");
+//   const [exerciseName, setExerciseName] = useState("");
+//   const [exerciseType, setExerciseType] = useState("run");
+//   const [duration, setDuration] = useState("");
+//   const [intensity, setIntensity] = useState("");
+//   const [isSubmitted, setIsSubmitted] = useState(false);
+//   const [exerciseLog, setExerciseLog] = useState([]);
+
+//   useEffect(() => {
+//     if (isLoggedIn) {
+//       setMessage("You are logged in. Here is your exercise data.");
+//     } else {
+//       setMessage("Login to see your exercise data.");
+//     }
+//   }, [isLoggedIn]);
+
+//   const handleAddExercise = async (event) => {
+//     event.preventDefault();
+
+//     const exerciseData = {
+//       exerciseName,
+//       exerciseType,
+//       duration,
+//       intensity,
+//       userId, // Use the userId value passed from props
+//     };
+
+//     try {
+//       console.log(exerciseData);
+
+//       const response = await axios.post('http://localhost:3001/auth/exercises', exerciseData);
+//       const newExercise = response.data.exercise;
+//       console.log(newExercise);
+
+//       setExerciseLog((prevLogs) => [...prevLogs, newExercise]);
+
+//       setExerciseName('');
+//       setExerciseType('run');
+//       setDuration('');
+//       setIntensity('');
+
+//       setIsSubmitted(true);
+
+//     } catch (error) {
+//       console.error('Error adding exercise: ', error);
+//       // Handle error here, show an error message, etc.
+//     }
 //   };
 
 //   return (
@@ -262,3 +355,305 @@ export default function Exercise({ isLoggedIn }) {
 //     </div>
 //   );
 // }
+
+
+
+// import { useEffect, useState } from "react";
+// import "./ExercisePage.css";
+// import axios from 'axios';
+
+// export default function ExercisePage({ isLoggedIn, appState }) {
+//   const [message, setMessage] = useState("");
+//   // const [exerciseName, setExerciseName] = useState("");
+//   // const [exerciseType, setExerciseType] = useState("run");
+//   const [exerciseName, setExerciseName] = useState(appState?.user?.exerciseName || "");
+//   const [exerciseType, setExerciseType] = useState(appState?.user?.exerciseType || "run");
+
+
+
+
+//   const [duration, setDuration] = useState("");
+//   const [intensity, setIntensity] = useState("");
+//   const [isSubmitted, setIsSubmitted] = useState(false);
+//   const [exerciseLog, setExerciseLog] = useState([]);
+
+//   useEffect(() => {
+//     console.log("appState:", appState);
+//     if (isLoggedIn) {
+//       setMessage("You are logged in. Here is your exercise data.");
+//     } else {
+//       setMessage("Login to see your exercise data.");
+//     }
+//   }, [isLoggedIn]);
+
+//   const handleAddExercise = async (event) => {
+//     event.preventDefault();
+    
+//     const exerciseData = {
+//       exerciseName,
+//       exerciseType,
+//       duration,
+//       intensity,
+//       userId: appState.user.id,
+//     };
+
+//     try {
+
+//       console.log(exerciseData)
+//       const response = await axios.post('http://localhost:3001/auth/exercises', exerciseData);
+//       const newExercise = response.data.exercise;
+
+//       setExerciseLog((prevLogs) => [...prevLogs, newExercise]);
+
+//       setExerciseName('');
+//       setExerciseType('run');
+//       setDuration('');
+//       setIntensity('');
+
+//       setIsSubmitted(true);
+//     } catch (error) {
+//       console.error('Error adding exercise: ', error);
+//       // Handle error here, show an error message, etc.
+//     }
+//   };
+
+//   return (
+//     <div className="ExercisePage">
+//       <h1>{message}</h1>
+//       {isLoggedIn && (
+//         <div>
+//           <form onSubmit={handleAddExercise}>
+//             <label htmlFor="exerciseName">Exercise Name:</label>
+//             <input
+//               type="text"
+//               name="exerciseName"
+//               id="exerciseName"
+//               value={exerciseName}
+//               onChange={(e) => setExerciseName(e.target.value)}
+//               required
+//             />
+
+//             <label htmlFor="exerciseType">Exercise Type:</label>
+//             <select
+//               name="exerciseType"
+//               id="exerciseType"
+//               value={exerciseType}
+//               onChange={(e) => setExerciseType(e.target.value)}
+//             >
+//               <option value="run">Run</option>
+//               <option value="bike">Bike</option>
+//               <option value="lift">Lift</option>
+//               <option value="swim">Swim</option>
+//               <option value="sports">Sports</option>
+//             </select>
+
+//             <label htmlFor="duration">Duration (min):</label>
+//             <input
+//               type="number"
+//               name="duration"
+//               id="duration"
+//               value={duration}
+//               onChange={(e) => setDuration(parseInt(e.target.value))}
+//             />
+
+//             <label htmlFor="intensity">Intensity:</label>
+//             <input
+//               type="number"
+//               name="intensity"
+//               id="intensity"
+//               value={intensity}
+//               onChange={(e) => setIntensity(parseInt(e.target.value))}
+//               max={10}
+//             />
+
+//             <button type="submit">Add Exercise</button>
+//           </form>
+
+//           <div className="previousLogs">
+//             <h2>Exercise Data</h2>
+//             {exerciseLog.map((log, index) => (
+//               <div key={index}>
+//                 <p>Exercise Name: {log.exerciseName}</p>
+//                 <p>Exercise Type: {log.exerciseType}</p>
+//                 <p>Duration: {log.duration}</p>
+//                 <p>Intensity: {log.intensity}</p>
+//                 <hr />
+//               </div>
+//             ))}
+//           </div>
+//         </div>
+//       )}
+//     </div>
+//   );
+// }
+
+import { useEffect, useState } from "react";
+import "./ExercisePage.css";
+import axios from 'axios';
+
+export default function ExercisePage({ isLoggedIn, appState }) {
+  const [message, setMessage] = useState("");
+  const [exerciseName, setExerciseName] = useState(appState?.user?.exerciseName || "");
+  const [exerciseType, setExerciseType] = useState(appState?.user?.exerciseType || "run");
+  const [duration, setDuration] = useState("");
+  const [intensity, setIntensity] = useState("");
+  const [created_at, Setcreated_at] = useState("");
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [exerciseLog, setExerciseLog] = useState([]);
+
+  useEffect(() => {
+    console.log("appState:", appState);
+    if (isLoggedIn) {
+      setMessage("You are logged in. Here is your exercise data.");
+      fetchExerciseLog();
+    } else {
+      setMessage("Login to see your exercise data.");
+    }
+  }, [isLoggedIn]);
+
+  const fetchExerciseLog = async () => {
+    try {
+      const response = await axios.get(`http://localhost:3001/auth/exercises?userId=${appState?.user.id}`);
+      const exerciseData = response.data.exercises;
+      console.log('Exercise Data:', exerciseData); // Check the structure of exerciseData
+      setExerciseLog(exerciseData);
+    } catch (error) {
+      console.error('Error fetching exercise log: ', error);
+      // Handle error here, show an error message, etc.
+    }
+  };
+
+  // const handleAddExercise = async (event) => {
+  //   event.preventDefault();
+    
+  //   const exerciseData = {
+  //     exerciseName,
+  //     exerciseType,
+  //     duration,
+  //     intensity,
+  //     userId: appState.user.id,
+  //   };
+
+  //   try {
+  //     const response = await axios.post('http://localhost:3001/auth/exercises', exerciseData);
+  //     const newExercise = response.data.exercise;
+
+  //     setExerciseLog((prevLogs) => [...prevLogs, newExercise]);
+
+  //     setExerciseName('');
+  //     setExerciseType('run');
+  //     setDuration('');
+  //     setIntensity('');
+
+  //     setIsSubmitted(true);
+  //   } catch (error) {
+  //     console.error('Error adding exercise: ', error);
+  //     // Handle error here, show an error message, etc.
+  //   }
+  // };
+  const handleAddExercise = async (event) => {
+    event.preventDefault();
+    
+    const exerciseData = {
+      exerciseName,
+      exerciseType,
+      duration,
+      intensity,
+      userId: appState.user.id,
+      created_at,
+    };
+  
+    try {
+      const response = await axios.post('http://localhost:3001/auth/exercises', exerciseData);
+      const newExercise = response.data.exercise;
+  
+      setExerciseLog((prevLogs) => [...prevLogs, newExercise]);
+  
+      setExerciseName('');
+      setExerciseType('run');
+      setDuration('');
+      setIntensity('');
+      setcreated_at('');
+  
+      setIsSubmitted(true);
+    } catch (error) {
+      console.error('Error adding exercise: ', error);
+      // Handle error here, show an error message, etc.
+    }
+  };
+
+  return (
+    <div className="ExercisePage">
+      <h1>{message}</h1>
+      {isLoggedIn && (
+        <div>
+          <form onSubmit={handleAddExercise}>
+            <label htmlFor="exerciseName">Exercise Name:</label>
+            <input
+              type="text"
+              name="exerciseName"
+              id="exerciseName"
+              value={exerciseName}
+              onChange={(e) => setExerciseName(e.target.value)}
+              required
+            />
+
+            <label htmlFor="exerciseType">Exercise Type:</label>
+            <select
+              name="exerciseType"
+              id="exerciseType"
+              value={exerciseType}
+              onChange={(e) => setExerciseType(e.target.value)}
+            >
+              <option value="run">Run</option>
+              <option value="bike">Bike</option>
+              <option value="lift">Lift</option>
+              <option value="swim">Swim</option>
+              <option value="sports">Sports</option>
+            </select>
+
+            <label htmlFor="duration">Duration (min):</label>
+            <input
+              type="number"
+              name="duration"
+              id="duration"
+              value={duration}
+              onChange={(e) => setDuration(parseInt(e.target.value))}
+            />
+
+            <label htmlFor="intensity">Intensity:</label>
+            <input
+              type="number"
+              name="intensity"
+              id="intensity"
+              value={intensity}
+              onChange={(e) => setIntensity(parseInt(e.target.value))}
+              max={10}
+            />
+
+            <button type="submit">Add Exercise</button>
+          </form>
+
+          <div className="previousLogs">
+          <h2>Exercise Data</h2>
+           {exerciseLog.map((log, index) => {
+            const time = new Date(log.created_at);
+            const formated = `${time.toLocaleDateString()} ${time.toLocaleTimeString()}`
+           return (
+              <div key={index}>
+         <p>Exercise Name: {log.exerciseName}</p>
+        <p>Exercise Type: {log.exerciseType}</p>
+        <p>Duration: {log.duration}</p>
+        <p>Intensity: {log.intensity}</p>
+        <p>Time: {formated}</p>
+        <hr />
+      </div>
+    );
+  })}
+</div>
+
+        </div>
+      )}
+    </div>
+  );
+}
