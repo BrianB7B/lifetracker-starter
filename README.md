@@ -41,8 +41,9 @@ By the end of this project you will be able to...
   - [x] Display a feed of all previously tracked activities.
   - [x] A form to enter relevant information (i.e., if tracking nutrition, the user can enter calories, timestamp, image, category, etc.).
   - [x] Each activity tracked is given a unique ID for easy lookup.
-- [ ] Deploy your website with Render. Check out our [Render Deployment Guide](https://courses.codepath.org/snippets/site/render_deployment_guide) for detailed instructions.
+- [x] Deploy your website with Render. Check out our [Render Deployment Guide](https://courses.codepath.org/snippets/site/render_deployment_guide) for detailed instructions.
 
+https://lifetracker-starter.onrender.com/
 ### Stretch Features
 
 Implement any of the following features to improve the application:
