@@ -115,22 +115,7 @@ class User {
 
     return user;
   }
-  //new code for showing exerise history code change
-  // static async addExercise(info) {
-  //   const { exerciseName, exerciseType, duration, intensity, userId } = info;
-  
-  //   // Add exercise to the database
-  //   const result = await db.query(
-  //     `INSERT INTO exercises (exercise_name, exercise_type, duration, intensity, user_id)
-  //      VALUES ($1, $2, $3, $4, $5)
-  //      RETURNING exercise_name, exercise_type, duration, intensity, user_id`,
-  //     [exerciseName, exerciseType, duration, intensity, userId]
-  //   );
-  
-  //   const exercise = result.rows[0];
-  
-  //   return exercise;
-  // }
+
   static async addExercise(info) {
     const { exerciseName, exerciseType, duration, intensity, userId } = info;
   
@@ -162,9 +147,6 @@ class User {
   }
   
   
-  
-  
-
 }
 
 module.exports = User;

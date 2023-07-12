@@ -1,28 +1,4 @@
-/* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;900&display=swap');
 
-.ExercisePage {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 15vh;
-  font-family: 'Poppins', sans-serif;
-}
-
-.ExercisePage h1 {
-  font-size: 24px;
-  font-weight: 900;
-  text-align: center;
-}
-
-.ExercisePage .button {
-  display: flex;
-}
-.ExercisePage .button button {
-  flex: 1;
-}
-.test button{
-  color:black;
-} */
 .ExercisePage {
   display: flex;
   flex-direction: column;
