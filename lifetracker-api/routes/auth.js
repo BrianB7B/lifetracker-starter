@@ -34,32 +34,7 @@ router.post("/register", async (req, res) => {
   }
 });
 
-// Login route
-// router.post("/login", async (req, res) => {
-//   const { email, password } = req.body;
 
-//   try {
-//     const user = await User.authenticate({ email, password });
-
-//     // Generate and sign JWT token
-//     const token = jwt.sign(
-//       { userId: user.id, userName: user.firstName },
-//       "secret-key-unique",
-//       {
-//         expiresIn: "1h",
-//       }
-//     );
-
-//     res.status(200).json({
-//       message: "Login Successful",
-//       token: token,
-//       user: user,
-//     });
-//   } catch (error) {
-//     console.error("Error logging in: ", error);
-//     res.status(500).json({ message: "Error Logging in" });
-//   }
-// });
 router.post("/login", async (req, res) => {
   const { email, password } = req.body;
 
@@ -91,29 +66,6 @@ router.post("/login", async (req, res) => {
     res.status(500).json({ message: "Error Logging in" });
   }
 });
-// router.post("/exercises", async (req, res) => {
-//   const { exerciseName, exerciseType, duration, intensity, userId } = req.body;
-
-//   try {
-//     // Call the addExercise method from your User model
-//     const exercise = await User.addExercise({
-//       exerciseName,
-//       exerciseType,
-//       duration,
-//       intensity,
-//       userId,
-//     });
-//     console.log(userId);
-
-//     res.status(201).json({ message: "Exercise added successfully", exercise });
-//   } catch (error) {
-//     console.error("Error adding exercise: ", error);
-//     res.status(500).json({ message: "Error adding exercise" });
-//   }
-// });
-
-// router.get(/exercises)
-// search database for exercises based on userId
 
 router.post("/exercises", async (req, res) => {
   console.log("at exercices route")
@@ -149,8 +101,5 @@ router.get("/exercises", async (req, res) => {
     res.status(500).json({ message: "Error retrieving exercises" });
   }
 });
-
-
-
 
 module.exports = router;
