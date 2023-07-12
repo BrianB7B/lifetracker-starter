@@ -22,6 +22,9 @@ By the end of this project you will be able to...
 ## Application Features
 ![ezgif com-video-to-gif (3)](https://github.com/BrianB7B/lifetracker-starter/assets/120551307/adb2cce9-a825-46b5-9b82-47ffd8a28662)
 
+## resubmitting for missing points showing parts that were fix or no point given :)
+![ezgif com-video-to-gif (4)](https://github.com/BrianB7B/lifetracker-starter/assets/120551307/a23875d0-5091-4780-97a6-7fb551ecd315)
+
 
 ### Core Features
 
